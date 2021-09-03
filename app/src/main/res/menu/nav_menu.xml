@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    设置只能单选-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navCall"
+            android:icon="@drawable/orange_pic"
+            android:title="Call"/>
+        <item
+            android:id="@+id/navLocation"
+            android:icon="@drawable/orange_pic"
+            android:title="Location"/>
+        <item
+            android:id="@+id/navFriends"
+            android:icon="@drawable/orange_pic"
+            android:title="Friends"/>
+    </group>
+
+</menu>
