@@ -49,4 +49,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0' // recycler 库
     implementation 'com.github.bumptech.glide:glide:4.9.0'  // 开源图片加载库
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.android.support:support-annotations:23.2.1'
+    implementation 'org.hamcrest:hamcrest-core:1.3'
 }

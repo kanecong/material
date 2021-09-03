@@ -2,13 +2,11 @@ package com.example.materialdesigntest
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.MotionEvent
+import android.view.*
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,13 +23,21 @@ class MainActivity : AppCompatActivity() {
         Fruit("apple", R.drawable.apple_pic),
         Fruit("banana", R.drawable.banana_pic),
         Fruit("cherry", R.drawable.cherry_pic),
-        Fruit("pear", R.drawable.pear_pic)
+        Fruit("pear", R.drawable.pear_pic) ,
+        Fruit("grape", R.drawable.grape_pic),
+        Fruit("mango", R.drawable.mango_pic)
     )
 
     val fruitList = ArrayList<Fruit>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //另外一种 占用状态栏的方法(配合 xml中 android:fitsSystemWindows(为状态栏留出空间，避免向上偏移) 属性使用更加)
+//        val decorView = window.decorView
+//        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//        window.statusBarColor = Color.TRANSPARENT
+
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolBar)
@@ -45,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         navView.setCheckedItem(R.id.navCall)     //将 Call 菜单项 默认选中
         navView.setNavigationItemSelectedListener {
-            drawerLayout.closeDrawers()  //关闭菜单
+            drawerLayout.closeDrawer()  //关闭菜单   // drawerLayout.closeDrawers()
             true  //表示事件被处理
         }
 
@@ -83,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onItemLongClick(vh: RecyclerView.ViewHolder?, position: Int) {
-                TODO("Not yet implemented")
+                Toast.makeText(context, " onItemLongClick", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -143,7 +149,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //home 按钮的 ID 永远都是 android.R.id.home。
         when(item.itemId){
-            android.R.id.home -> drawerLayout.openDrawer(GravityCompat.START)
+            android.R.id.home -> drawerLayout.openDrawerView()   //drawerLayout.openDrawer(GravityCompat.START)
             R.id.backup -> Toast.makeText(this, " Backup !", Toast.LENGTH_SHORT).show()
             R.id.delete -> Toast.makeText(this, " Delete !", Toast.LENGTH_SHORT).show()
             R.id.settings -> Toast.makeText(this, " Settings !", Toast.LENGTH_SHORT).show()
